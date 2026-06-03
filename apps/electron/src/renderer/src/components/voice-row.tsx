@@ -4,7 +4,6 @@ import { cn } from "@renderer/lib/utils";
 import {
   Check,
   CircleDollarSign,
-  Cpu,
   Download,
   Key,
   RefreshCw,
@@ -166,31 +165,19 @@ export function VoiceRow({
             </Tooltip>
           )}
           {local ? (
-            <>
-              {item.sizeBytes != null && (
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <span>
-                      <StatPair
-                        icon={Download}
-                        label={formatBytes(item.sizeBytes)}
-                      />
-                    </span>
-                  </TooltipTrigger>
-                  <TooltipContent>Download size</TooltipContent>
-                </Tooltip>
-              )}
-              {item.ram && (
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <span>
-                      <StatPair icon={Cpu} label={`${item.ram} RAM`} />
-                    </span>
-                  </TooltipTrigger>
-                  <TooltipContent>Memory required</TooltipContent>
-                </Tooltip>
-              )}
-            </>
+            item.sizeBytes != null && (
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <span>
+                    <StatPair
+                      icon={Download}
+                      label={formatBytes(item.sizeBytes)}
+                    />
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent>Download size</TooltipContent>
+              </Tooltip>
+            )
           ) : (
             <>
               {item.cost != null && (
